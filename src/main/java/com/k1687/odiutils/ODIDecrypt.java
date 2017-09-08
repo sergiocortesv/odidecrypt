@@ -2,19 +2,27 @@ package com.k1687.odiutils;
 
 import com.sunopsis.dwg.DwgObject;
 
+/**
+ * Decrypts ODI encoded strings using the ODI SDK classes
+ * @author scortes
+ */
 public class ODIDecrypt {
 	
-	public static void main(String[] args) {
-		if(args.length < 1){
-			System.out.println("Usage : java -jar ODIDecrypt.jar <ODIPassword>");
-		}
-		DwgObject dg= new DwgObject(){
+	private DwgObject odiDg;
+	
+	public ODIDecrypt(){
+		odiDg = new DwgObject(){
+			private static final long serialVersionUID = 1L;
+
 			@Override
 			public String getObjectLocation() {
 				return null;
 			}
 		};
-		String decryptedStr = String.valueOf(dg.snpsDecypher(args[0]).toCharArray());
-		System.out.println(decryptedStr);
 	}
+	
+	public String decrypt(String encrypted){
+		return String.valueOf(odiDg.snpsDecypher(encrypted).toCharArray());
+	}
+	
 }
