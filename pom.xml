@@ -6,13 +6,46 @@
   <packaging>jar</packaging>
   <version>1.0-SNAPSHOT</version>
   <name>odidecrypt</name>
-  <url>http://maven.apache.org</url>
+  <url>https://github.com/sergiocortesv/odidecrypt</url>
+  
   <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
-    </dependency>
+		<dependency>
+    		<groupId>commons-lang</groupId>
+    		<artifactId>commons-lang</artifactId>
+    		<version>2.2</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sunopsis</groupId>
+			<artifactId>odi-core</artifactId>
+			<version>11.1.1.6.0</version>
+		</dependency>
   </dependencies>
+  
+  <build>
+  	<plugins>
+  		<plugin>
+			<artifactId>maven-assembly-plugin</artifactId>
+        	<version>3.1.0</version>
+        	<configuration>
+				<descriptorRefs>
+					<descriptorRef>jar</descriptorRef>
+				</descriptorRefs>
+          		<archive>
+            		<manifest>
+						<mainClass>com.k1687.odiutils.ODIDecrypt</mainClass>
+	            	</manifest>
+    	      	</archive>
+        	</configuration>
+				<executions>
+				  <execution>
+					<id>make-assembly</id>
+					<phase>package</phase>
+					<goals>
+						<goal>single</goal>
+					</goals>
+				  </execution>
+				</executions>
+        </plugin>
+  	</plugins>
+  </build>
 </project>
